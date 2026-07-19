@@ -23,6 +23,10 @@
   <a href="#開発環境での起動">開発者向け情報</a>
 </p>
 
+## アプリ画面
+
+![Simple Voice Recorderのアプリ画面](docs/images/recoder.png)
+
 ## 概要
 
 Simple Voice Recorderは、TauriとHTML/CSS/JavaScriptで作られたWindows向けの
