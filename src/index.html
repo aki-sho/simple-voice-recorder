@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Simple Voice Recorder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/lame.min.js"></script>
+    <script type="module" src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <h1>Simple Voice Recorder</h1>
+          <p>軽量ポータブルボイスレコーダー</p>
+        </div>
+        <span class="version">v1.0.0</span>
+      </header>
+
+      <section class="panel destination-panel" aria-labelledby="destination-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="destination-title">保存先フォルダ</h2>
+            <p id="folder-path" class="folder-path">未設定</p>
+          </div>
+          <button id="choose-folder-button" class="button secondary" type="button">
+            保存先を選択
+          </button>
+        </div>
+      </section>
+
+      <section class="panel recorder-panel" aria-labelledby="recorder-title">
+        <div class="section-heading recorder-heading">
+          <h2 id="recorder-title">録音</h2>
+          <label class="format-setting" for="save-format">
+            <span>既定の保存形式</span>
+            <select id="save-format">
+              <option value="webm">WebM</option>
+              <option value="mp3">MP3</option>
+            </select>
+          </label>
+        </div>
+        <div class="recording-state" aria-live="polite">
+          <span id="state-dot" class="state-dot"></span>
+          <span id="recording-status">待機中</span>
+          <span id="recording-time" class="recording-time">00:00</span>
+        </div>
+        <div class="button-row">
+          <button id="start-button" class="button primary" type="button">録音開始</button>
+          <button id="stop-button" class="button danger" type="button" disabled>録音停止</button>
+        </div>
+        <p id="format-hint" class="hint">録音停止後、WebM形式で自動保存されます。</p>
+      </section>
+
+      <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+
+      <section class="panel recordings-panel" aria-labelledby="recordings-title">
+        <div class="section-heading compact">
+          <h2 id="recordings-title">保存済み録音</h2>
+          <button id="refresh-button" class="button text-button" type="button">一覧を更新</button>
+        </div>
+        <div id="recordings-empty" class="empty-state">保存済みの録音はありません。</div>
+        <ul id="recordings-list" class="recordings-list" aria-label="保存済み録音ファイル"></ul>
+      </section>
+
+      <section class="panel player-panel" aria-labelledby="player-title">
+        <h2 id="player-title">再生</h2>
+        <p id="selected-file" class="selected-file">ファイルが選択されていません</p>
+        <audio id="audio-player" preload="metadata"></audio>
+        <div class="player-progress">
+          <span id="current-time">00:00</span>
+          <input id="seek-bar" type="range" min="0" max="100" value="0" aria-label="再生位置" disabled />
+          <span id="duration">00:00</span>
+        </div>
+        <div class="button-row player-buttons">
+          <button id="play-button" class="button primary" type="button" disabled>再生</button>
+          <button id="pause-button" class="button secondary" type="button" disabled>一時停止</button>
+          <button id="player-stop-button" class="button secondary" type="button" disabled>停止</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

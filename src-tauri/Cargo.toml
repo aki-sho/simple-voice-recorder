@@ -1,0 +1,31 @@
+[package]
+name = "simple-voice-recorder"
+version = "1.0.0"
+description = "A lightweight portable voice recorder for Windows"
+authors = ["aki-sho"]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/aki-sho/simple-voice-recorder"
+
+[features]
+portable = []
+
+[lib]
+name = "simple_voice_recorder_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rfd = "0.17.2"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

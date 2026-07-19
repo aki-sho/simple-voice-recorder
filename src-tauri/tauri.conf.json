@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Simple Voice Recorder",
+  "version": "1.0.0",
+  "identifier": "com.simplevoicerecorder.desktop",
+  "build": {
+    "frontendDist": "../src"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; media-src 'self' blob:; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "category": "Utility",
+    "publisher": "aki-sho",
+    "copyright": "Copyright © 2026 aki-sho",
+    "shortDescription": "Lightweight portable voice recorder",
+    "longDescription": "A lightweight offline voice recorder for Windows.",
+    "icon": [
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper",
+        "silent": true
+      },
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "uninstallerIcon": "icons/icon.ico",
+        "installMode": "currentUser",
+        "languages": [
+          "Japanese",
+          "English"
+        ],
+        "startMenuFolder": "Simple Voice Recorder"
+      }
+    }
+  }
+}
